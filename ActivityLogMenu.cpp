@@ -12,7 +12,7 @@ void ActivityLogMenu(ActivityLog& log, int& choice) {
     cout << "         Harley Report Management System             " << endl;
     cout << "=====================================================" << endl;
     cout << "                                                     " << endl;
-    cout << "	Activity Logs									  " <<endl;
+    cout << "Activity Logs										  " <<endl;
     cout << "                                                     " << endl;
     log.addLog("User accessed the activity log menu.");
     log.printLogs();

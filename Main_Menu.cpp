@@ -9,7 +9,7 @@ using namespace std;
 
 void ManageEmployeeLogsMenu(ManageEmployeeMain& employeeList, ActivityLog& activityLog, int& choice);
 void InventoryManagementMenu(InventoryManagementMain& inv, ActivityLog& activityLog, int& choice);
-void LogsTransactionsMainMenu(LogsManagementMain& logSystem, int& choice); 
+void LogsTransactionsMainMenu(LogsManagementMain& logSystem, ActivityLog& activityLog, int& choice); 
 void ActivityLogMenu(ActivityLog& log, int& choice);
 void SalesInvoiceMenu(SalesInvoice& salesInvoice,ActivityLog& activityLog, int& choice);
 
@@ -46,7 +46,7 @@ int main() {
                 InventoryManagementMenu(inv,log, choice);
                 break;
             case 3:
-                LogsTransactionsMainMenu(logSystem, choice); 
+                LogsTransactionsMainMenu(logSystem, log, choice); 
                 break;
             case 4:
                 ActivityLogMenu(log, choice);

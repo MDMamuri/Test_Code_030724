@@ -3,14 +3,18 @@
 #include <iostream>
 #include <string>
 #include <stack>
+#include <ctime>
+#include <cstdlib>
 
 using namespace std;
 
 struct SalesInvoiceStructure {
-    string date, invoiceCode, description;
+    string date;
+    int invoiceCode;
+    string description;
     SalesInvoiceStructure* next;
 
-    SalesInvoiceStructure(const string& d, const string& ic, const string& desc)
+    SalesInvoiceStructure(const string& d, int ic, const string& desc)
         : date(d), invoiceCode(ic), description(desc), next(NULL) {}
 };
 
@@ -18,7 +22,22 @@ class SalesInvoice {
 private:
     SalesInvoiceStructure* head;
     stack<SalesInvoiceStructure*> history;
-    
+
+    string getCurrentTime() const {
+        time_t now = time(0);
+        tm *ltm = localtime(&now);
+        char buffer[20];
+        sprintf(buffer, "%04d-%02d-%02d %02d:%02d:%02d",
+                1900 + ltm->tm_year, 1 + ltm->tm_mon, ltm->tm_mday,
+                ltm->tm_hour, ltm->tm_min, ltm->tm_sec);
+        return string(buffer);
+    }
+
+    int generateRandomID() const {
+        srand(time(0));
+        return rand() % 1000000000;
+    }
+
 public:
     SalesInvoice() : head(NULL) {}
     ~SalesInvoice() {
@@ -29,7 +48,9 @@ public:
         }
     }
 
-    void addInvoice(const string& date, const string& invoiceCode, const string& description) {
+    void addInvoice(const string& description) {
+        string date = getCurrentTime();
+        int invoiceCode = generateRandomID();
         SalesInvoiceStructure* newInvoice = new SalesInvoiceStructure(date, invoiceCode, description);
         newInvoice->next = head;
         head = newInvoice;
@@ -55,55 +76,32 @@ public:
         }
     }
 
-    void updateInvoice(const string& invoiceCode) {
-        SalesInvoiceStructure* current = head;
-        while (current) {
-            if (current->invoiceCode == invoiceCode) {
-                int choice;
-                system("cls");
-                cout << "=====================================================" << endl;
-                cout << "         Harley Report Management System             " << endl;
-                cout << "=====================================================" << endl;
-                cout << "                                                     " << endl;
-                cout << "   Update Menu:                                      " << endl;
-                cout << "                                                     " << endl;
-                cout << "       [1] - Update Date                             " << endl;
-                cout << "       [2] - Update Description                      " << endl;
-                cout << "                                                     " << endl;
-                cout << "=====================================================" << endl;
-                cout << "Choose an option: ";
-                cin >> choice;
-                cin.ignore();
+	void updateInvoice(int invoiceCode) {
+	    SalesInvoiceStructure* current = head;
+	    while (current) {
+	        if (current->invoiceCode == invoiceCode) {
+	            string description;
+	            system("cls");
+	            cout << "=====================================================" << endl;
+	            cout << "         Harley Report Management System             " << endl;
+	            cout << "=====================================================" << endl;
+	            cout << "                                                     " << endl;
+	            cout << "Update Menu:                                      " << endl;
+	            cout << "                                                     " << endl;
+	            cout << "Enter new description: ";
+	            getline(cin, description);
+	            current->description = description;
+	            cout << "Description updated successfully!\n";
+	            cout << "                                                     " << endl;
+	            cout << "=====================================================" << endl;
+	            return;
+	        }
+	        current = current->next;
+	    }
+	    cout << "Invoice not found.\n";
+	}
 
-                switch (choice) {
-                    case 1: {
-                        string date;
-                        cout << "Enter new date (MM/DD/YYYY): ";
-                        getline(cin, date);
-                        current->date = date;
-                        cout << "Date updated successfully!\n";
-                        break;
-                    }
-                    case 2: {
-                        string description;
-                        cout << "Enter new description: ";
-                        getline(cin, description);
-                        current->description = description;
-                        cout << "Description updated successfully!\n";
-                        break;
-                    }
-                    default:
-                        cout << "Invalid choice. Please try again.\n";
-                        break;
-                }
-                return;
-            }
-            current = current->next;
-        }
-        cout << "Invoice not found.\n";
-    }
-
-    void deleteInvoice(const string& invoiceCode) {
+    void deleteInvoice(int invoiceCode) {
         SalesInvoiceStructure* current = head;
         SalesInvoiceStructure* prev = NULL;
 

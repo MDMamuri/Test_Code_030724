@@ -26,7 +26,8 @@ void SalesInvoiceMenu(SalesInvoice& salesInvoice, ActivityLog& activityLog, int&
         cin.ignore();
         system("cls");
 
-        string date, invoiceCode, description;
+        string description;
+        int invoiceCode;
 
         switch (choice) {
             case 1:
@@ -34,13 +35,9 @@ void SalesInvoiceMenu(SalesInvoice& salesInvoice, ActivityLog& activityLog, int&
                 cout << "         Harley Report Management System             " << endl;
                 cout << "=====================================================" << endl;
                 cout << "                                                     " << endl;
-                cout << "Date of Purchase (MM/DD/YYYY): ";
-                getline(cin, date);
-                cout << "Enter Invoice Code: ";
-                getline(cin, invoiceCode);
-                cout << "Enter Description: ";
+                cout << "Enter Description (Ex. Description - 1): ";
                 getline(cin, description);
-                salesInvoice.addInvoice(date, invoiceCode, description);
+                salesInvoice.addInvoice(description);
                 activityLog.addLog("Added Invoice");
                 cout << "                                                     " << endl;
                 cout << "=====================================================" << endl;
@@ -63,7 +60,8 @@ void SalesInvoiceMenu(SalesInvoice& salesInvoice, ActivityLog& activityLog, int&
                 cout << "                                                     " << endl;
                 salesInvoice.printInvoices();
                 cout << "Enter invoice code to update: ";
-                getline(cin, invoiceCode);
+                cin >> invoiceCode;
+                cin.ignore();
                 salesInvoice.updateInvoice(invoiceCode);
                 activityLog.addLog("Updated Invoice");
                 cout << "                                                     " << endl;
@@ -75,13 +73,15 @@ void SalesInvoiceMenu(SalesInvoice& salesInvoice, ActivityLog& activityLog, int&
                 cout << "         Harley Report Management System             " << endl;
                 cout << "=====================================================" << endl;
                 cout << "                                                     " << endl;
-                cout << "Enter invoice code to delete:                        ";
-                getline(cin, invoiceCode);
+                salesInvoice.printInvoices();
+                cout << "Enter invoice code to delete: ";
+                cin >> invoiceCode;
+                cin.ignore();
                 salesInvoice.deleteInvoice(invoiceCode);
-                cout << " Invoice Deleted                                     " <<endl;
                 activityLog.addLog("Deleted Invoice");
                 cout << "                                                     " << endl;
                 cout << "=====================================================" << endl;
+                system ("Pause");
                 break;
             case 5:
                 return;

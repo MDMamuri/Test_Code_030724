@@ -1,16 +1,19 @@
 #include "LogsTransactionsMenu.h"
+#include "ActivityLogMenu.h"
 #include <iostream>
 #include <string>
 
+
 using namespace std;
 
-void LogsTransactionsMainMenu(LogsManagementMain& logSystem, int& choice) {
+void LogsTransactionsMainMenu(LogsManagementMain& logSystem, ActivityLog& activityLog, int& choice){
     int id;
     string description;
 
     system("cls");
 
     do {
+    	system("cls");
         cout << "=====================================================" << endl;
         cout << "         Harley Report Management System             " << endl;
         cout << "=====================================================" << endl;
@@ -44,11 +47,12 @@ void LogsTransactionsMainMenu(LogsManagementMain& logSystem, int& choice) {
             cout << "Enter Transaction ID: ";
             cin >> id;
             cin.ignore();
-            cout << "Enter Transaction Description: ";
+            cout << "Enter Transaction Description (Ex. Description - 1): ";
             getline(cin, description);
             logSystem.logTransaction(id, description);
             cout << "                                                     " << endl;
             cout << "=====================================================" << endl;
+            activityLog.addLog("Transaction Added");
             break;
 
         case 2:
@@ -60,6 +64,7 @@ void LogsTransactionsMainMenu(LogsManagementMain& logSystem, int& choice) {
             logSystem.displayTransactions();
             cout << "                                                     " << endl;
             cout << "=====================================================" << endl;
+            activityLog.addLog("Displayed Transaction History");
             break;
 
         case 3:
@@ -74,6 +79,7 @@ void LogsTransactionsMainMenu(LogsManagementMain& logSystem, int& choice) {
             logSystem.searchTransaction(id);
             cout << "                                                     " << endl;
             cout << "=====================================================" << endl;
+            activityLog.addLog("Search Transaction");
             break;
 
         case 4:
@@ -88,6 +94,7 @@ void LogsTransactionsMainMenu(LogsManagementMain& logSystem, int& choice) {
             logSystem.deleteTransaction(id);
             cout << "                                                     " << endl;
             cout << "=====================================================" << endl;
+            activityLog.addLog("Delete Transaction");
             break;
 
         case 5:
@@ -98,6 +105,6 @@ void LogsTransactionsMainMenu(LogsManagementMain& logSystem, int& choice) {
             cout << "Invalid choice. Please try again." << endl;
             break;
         }
-    } while (choice != 6);
+    } while (choice != 5);
 }
 

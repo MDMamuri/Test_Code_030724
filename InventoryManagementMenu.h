@@ -84,17 +84,18 @@ public:
             if (current->id == id) {
                 int choice;
                 system("cls");
-                cout << "-----------------------------------------------------" << endl;
-                cout << "         Harley Inventory Management System         " << endl;
-                cout << "-----------------------------------------------------" << endl;
-                cout << "   Update Menu:                                       " << endl;
-                cout << "                                                      " << endl;
-                cout << "       [1] - Update Name"                            << endl;
-                cout << "       [2] - Add Quantity"                           << endl;
-                cout << "       [3] - Subtract Quantity"                      << endl;
-                cout << "       [4] - Update Price"                           << endl;
-                cout << "                                                      " << endl;
-                cout << "-----------------------------------------------------" << endl;
+                cout << "=====================================================" << endl;
+        		cout << "         Harley Report Management System             " << endl;
+        		cout << "=====================================================" << endl;
+        		cout << "                                                     " << endl;
+                cout << "   Update Menu:                                      " << endl;
+                cout << "                                                     " << endl;
+                cout << "       [1] - Update Name"                              << endl;
+                cout << "       [2] - Add Quantity"                             << endl;
+                cout << "       [3] - Subtract Quantity"                        << endl;
+                cout << "       [4] - Update Price"                             << endl;
+                cout << "                                                      "<< endl;
+                cout << "=====================================================" << endl;
                 cout << "Choose an option: ";
                 cin >> choice;
                 cin.ignore();
@@ -102,30 +103,48 @@ public:
                 switch (choice) {
                     case 1: {
                         string name;
+                        cout << "=====================================================" << endl;
+        				cout << "         Harley Report Management System             " << endl;
+        				cout << "=====================================================" << endl;
+        				cout << "                                                     " << endl;
                         cout << "Enter new name: ";
                         getline(cin, name);
                         current->name = name;
                         cout << "Name updated successfully!" << endl;
                         activityLog.addLog("Product Name updated successfully!");
+                        cout << "                                                     " << endl;
+                        cout << "=====================================================" << endl;
                         system("pause");
                         break;
                     }
                     case 2: {
                         int quantity;
+                        cout << "=====================================================" << endl;
+        				cout << "         Harley Report Management System             " << endl;
+        				cout << "=====================================================" << endl;
+        				cout << "                                                     " << endl;
                         cout << "Enter quantity to add: ";
                         cin >> quantity;
                         current->quantity += quantity;
                         cout << "Quantity added successfully!" << endl;
                         activityLog.addLog("Product Quantity added successfully!");
+                        cout << "                                                     " << endl;
+                        cout << "=====================================================" << endl;
                         system("pause"); 
                         break;
                     }
                     case 3: {
                         int quantity;
+                        cout << "=====================================================" << endl;
+        				cout << "         Harley Report Management System             " << endl;
+        				cout << "=====================================================" << endl;
+        				cout << "                                                     " << endl;
                         cout << "Enter quantity to subtract: ";
                         cin >> quantity;
                         if (quantity > current->quantity) {
                             cout << "Error: Not enough quantity to subtract!" << endl;
+                            cout << "                                                     " << endl;
+                        	cout << "=====================================================" << endl;
                             activityLog.addLog("Error: Not enough quantity to subtract!");
                             system("pause"); 
                         } else {
@@ -134,10 +153,14 @@ public:
                                 Product* temp = current;
                                 current = current->next;
                                 deleteProduct(temp);
+                                cout << "                                                     " << endl;
+                        		cout << "=====================================================" << endl;
                                 activityLog.addLog("Product deleted due to quantity reaching 0!");
                             } else {
                                 cout << "Quantity subtracted successfully!" << endl;
                                 activityLog.addLog("Product Quantity subtracted successfully!");
+                                cout << "                                                     " << endl;
+                        		cout << "=====================================================" << endl;
                             }
                             system("pause"); 
                         }
@@ -145,10 +168,16 @@ public:
                     }
                     case 4: {
                         double price;
+                        cout << "=====================================================" << endl;
+        				cout << "         Harley Report Management System             " << endl;
+        				cout << "=====================================================" << endl;
+        				cout << "                                                     " << endl;
                         cout << "Enter new price: ";
                         cin >> price;
                         current->price = price;
                         cout << "Price updated successfully!" << endl;
+                        cout << "                                                     " << endl;
+                        cout << "=====================================================" << endl;
                         system("pause"); 
                         break;
                     }

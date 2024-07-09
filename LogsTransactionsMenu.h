@@ -1,6 +1,6 @@
 #ifndef LOGSTRANSACTIONSMENU_H
 #define LOGSTRANSACTIONSMENU_H
-
+#include "ActivityLogMenu.h"
 #include <iostream>
 #include <string>
 #include <stack>
@@ -53,14 +53,14 @@ public:
     void displayTransactions() const {
         if (!head) {
             cout << "No transactions found." << endl;
-            system("pause");
+            
             return;
         }
         Transaction* temp = head;
         while (temp) {
             cout << "ID: " << temp->id << ", Description: " << temp->description << ", Timestamp: " << temp->timestamp << endl;
             temp = temp->next;
-            system("pause");
+            
         }
         system("pause");
     }
