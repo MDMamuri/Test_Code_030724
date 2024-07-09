@@ -17,7 +17,7 @@ void SalesInvoiceMenu(SalesInvoice& salesInvoice, ActivityLog& activityLog, int&
         cout << "        [1] - Add Invoice                            " << endl;
         cout << "        [2] - Invoice History                        " << endl;
         //cout << "        [3] - Update Invoice                         " << endl;
-        cout << "        [3] - Delete Invoice                         " << endl;
+        cout << "        [3] - Void Invoice                         " << endl;
         cout << "        [4] - Return Main Menu                       " << endl;
         cout << "                                                     " << endl;
         cout << "=====================================================" << endl;
@@ -77,11 +77,11 @@ void SalesInvoiceMenu(SalesInvoice& salesInvoice, ActivityLog& activityLog, int&
                 cout << "=====================================================" << endl;
                 cout << "                                                     " << endl;
                 salesInvoice.printInvoices();
-                cout << "Enter invoice code to delete: ";
+                cout << "Enter invoice code to void: ";
                 cin >> invoiceCode;
                 cin.ignore();
                 salesInvoice.deleteInvoice(invoiceCode);
-                activityLog.addLog("Deleted Invoice");
+                activityLog.addLog("void Invoice");
                 system("Pause");
                 break;
             case 4:
