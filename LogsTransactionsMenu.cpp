@@ -66,7 +66,7 @@ void LogsTransactionsMainMenu(LogsManagementMain& logSystem, int& choice) {
             logSystem.deleteTransaction(id);
             break;
 
-        case 6:
+        case 5:
             cout << "Returning to main menu..." << endl;
             break;
 

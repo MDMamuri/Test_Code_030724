@@ -10,9 +10,8 @@ void ManageEmployeeLogsMenu(ManageEmployeeMain& employeeList, ActivityLog& activ
     int id;
     string name;
 
-    system("cls");
-
     do {
+    	system("cls");
         cout << "-----------------------------------------------------" << endl;
         cout << "         Harley Report Management System             " << endl;
         cout << "-----------------------------------------------------" << endl;
@@ -47,12 +46,14 @@ void ManageEmployeeLogsMenu(ManageEmployeeMain& employeeList, ActivityLog& activ
             getline(cin, name);
             employeeList.addEmployee(id, name);
             activityLog.addLog("Added employee");
+            system("pause");
             break;
 
         case 2:
             system("cls");
             employeeList.displayEmployees();
             activityLog.addLog("Viewed employee logs.");
+            system("pause");
             break;
 
         case 3:
@@ -64,6 +65,7 @@ void ManageEmployeeLogsMenu(ManageEmployeeMain& employeeList, ActivityLog& activ
             getline(cin, name);
             employeeList.updateEmployee(id, name);
             activityLog.addLog("Updated employee");
+            system("pause");
             break;
 
         case 4:
@@ -72,7 +74,7 @@ void ManageEmployeeLogsMenu(ManageEmployeeMain& employeeList, ActivityLog& activ
             cin >> id;
             cin.ignore();
             employeeList.recordTimeIn(id);
-            //activityLog.addLog("Recorded time in for employee ID " + to_string(id));
+            system("pause");
             break;
 
         case 5:
@@ -81,7 +83,7 @@ void ManageEmployeeLogsMenu(ManageEmployeeMain& employeeList, ActivityLog& activ
             cin >> id;
             cin.ignore();
             employeeList.recordTimeOut(id);
-            //activityLog.addLog("Recorded time out for employee ID " + to_string(id));
+            system("pause");
             break;
 
         case 6:

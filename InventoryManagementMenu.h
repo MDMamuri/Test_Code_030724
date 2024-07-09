@@ -1,10 +1,10 @@
 #ifndef INVENTORYMANAGEMENTMAIN_H
 #define INVENTORYMANAGEMENTMAIN_H
-
 #include "ActivityLogMenu.h"
 #include <iostream>
 #include <string>
-
+#include <cstdlib> 
+#include <ctime>  
 using namespace std;
 
 struct Product {
@@ -21,6 +21,12 @@ class InventoryManagementMain {
 private:
     Product* head;
 
+
+    int generateRandomID() {
+        srand(time(0)); 
+        return rand() % 1000000000; 
+    }
+
 public:
     InventoryManagementMain() : head(NULL) {}
 
@@ -32,27 +38,26 @@ public:
         }
     }
 
-    void addProduct(int id, string name, int quantity, double price) {
+    void addProduct(string name, int quantity, double price) {
+        int id = generateRandomID(); 
         Product* newProduct = new Product(id, name, quantity, price);
         newProduct->next = head;
         head = newProduct;
         cout << "Product added successfully!" << endl;
-        system("pause"); // Pause after adding a product
+        system("pause"); 
     }
 
     void showProductList() {
         Product* current = head;
         if (current == NULL) {
             cout << "No products in inventory." << endl;
-            system("pause"); // Pause if no products are found
             return;
         }
         while (current) {
             cout << "ID: " << current->id << ", Name: " << current->name
                  << ", Quantity: " << current->quantity << ", Price: $" << current->price << endl;
             current = current->next;
-            system("pause"); // Pause after displaying each product
-        }
+        } 
     }
 
     void updateSpecificProduct(int id, ActivityLog& activityLog) {
@@ -84,7 +89,7 @@ public:
                         current->name = name;
                         cout << "Name updated successfully!" << endl;
                         activityLog.addLog("Product Name updated successfully!");
-                        system("pause"); // Pause after updating the name
+                        system("pause");
                         break;
                     }
                     case 2: {
@@ -94,7 +99,7 @@ public:
                         current->quantity += quantity;
                         cout << "Quantity added successfully!" << endl;
                         activityLog.addLog("Product Quantity added successfully!");
-                        system("pause"); // Pause after adding quantity
+                        system("pause"); 
                         break;
                     }
                     case 3: {
@@ -104,12 +109,12 @@ public:
                         if (quantity > current->quantity) {
                             cout << "Error: Not enough quantity to subtract!" << endl;
                             activityLog.addLog("Error: Not enough quantity to subtract!");
-                            system("pause"); // Pause after error message
+                            system("pause"); 
                         } else {
                             current->quantity -= quantity;
                             cout << "Quantity subtracted successfully!" << endl;
                             activityLog.addLog("Product Quantity subtracted successfully!");
-                            system("pause"); // Pause after subtracting quantity
+                            system("pause"); 
                         }
                         break;
                     }
@@ -119,12 +124,12 @@ public:
                         cin >> price;
                         current->price = price;
                         cout << "Price updated successfully!" << endl;
-                        system("pause"); // Pause after updating price
+                        system("pause"); 
                         break;
                     }
                     default:
                         cout << "Invalid choice. Please try again." << endl;
-                        system("pause"); // Pause after invalid choice
+                        system("pause"); 
                         break;
                 }
                 return;

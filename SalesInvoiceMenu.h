@@ -35,6 +35,7 @@ public:
         head = newInvoice;
         history.push(newInvoice);
         cout << "Invoice added successfully.\n";
+        system("pause"); 
     }
 
     void printInvoices() const {

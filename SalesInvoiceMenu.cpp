@@ -57,7 +57,7 @@ void SalesInvoiceMenu(SalesInvoice& salesInvoice,ActivityLog& activityLog, int& 
                 getline(cin, invoiceCode);
                 salesInvoice.deleteInvoice(invoiceCode);
                 activityLog.addLog("Deleted Invoice");
-                system("pause");
+
                 break;
             case 5:
                 return;

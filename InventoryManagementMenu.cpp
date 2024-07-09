@@ -24,12 +24,11 @@ void InventoryManagementMenu(InventoryManagementMain& inv, ActivityLog& activity
 
         switch (choice) {
             case 1: {
-                int id, quantity;
+                int quantity;
                 string name;
                 double price;
 
-                cout << "Enter product ID: ";
-                cin >> id;
+                system("cls");
                 cout << "Enter product name: ";
                 cin.ignore();
                 getline(cin, name);
@@ -38,20 +37,20 @@ void InventoryManagementMenu(InventoryManagementMain& inv, ActivityLog& activity
                 cout << "Enter product price: ";
                 cin >> price;
 
-                inv.addProduct(id, name, quantity, price);
+                inv.addProduct(name, quantity, price); 
                 activityLog.addLog("Added Product");
                 break;
             }
             case 2:
                 inv.showProductList();
                 activityLog.addLog("Viewed Product List");
-                system("pause"); // Pause after displaying the list
+                system("pause");
                 break;
             case 3: {
                 int id;
+                inv.showProductList();
                 cout << "Enter product ID to update: ";
                 cin >> id;
-
                 inv.updateSpecificProduct(id, activityLog);
                 break;
             }
@@ -61,7 +60,6 @@ void InventoryManagementMenu(InventoryManagementMain& inv, ActivityLog& activity
                 break;
             default:
                 cout << "Invalid choice. Please try again." << endl;
-                system("pause");
                 break;
         }
 
