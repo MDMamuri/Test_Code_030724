@@ -12,7 +12,7 @@ struct SalesInvoiceStructure {
     string date;
     int invoiceCode;
     string description;
-    double total;  // New member for storing total amount
+    double total; 
     SalesInvoiceStructure* next;
 
     SalesInvoiceStructure(const string& d, int ic, const string& desc, double t)
@@ -23,7 +23,7 @@ class SalesInvoice {
 private:
     SalesInvoiceStructure* head;
     stack<SalesInvoiceStructure*> history;
-    double accumulatedFunds;  // New member for accumulated funds
+    double accumulatedFunds;
 
     string getCurrentTime() const {
         time_t now = time(0);
@@ -50,7 +50,7 @@ public:
         newInvoice->next = head;
         head = newInvoice;
         history.push(newInvoice);
-        accumulatedFunds += total;  // Add total to accumulated funds
+        accumulatedFunds += total;
         cout << "Invoice added successfully.\n";
         system("pause"); 
     }
@@ -69,7 +69,6 @@ public:
             return;
         }
 
-        // Deduct invoice total from accumulated funds
         accumulatedFunds -= current->total;
 
         if (!prev) {
