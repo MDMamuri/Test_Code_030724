@@ -1,10 +1,11 @@
 #include "SalesInvoiceMenu.h"
+#include "ActivityLogMenu.h"
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-void SalesInvoiceMenu(SalesInvoice& salesInvoice, int& choice) {
+void SalesInvoiceMenu(SalesInvoice& salesInvoice,ActivityLog& activityLog, int& choice){
 
     do {
         system("cls");
@@ -37,21 +38,25 @@ void SalesInvoiceMenu(SalesInvoice& salesInvoice, int& choice) {
                 cout << "Enter Description: ";
                 getline(cin, description);
                 salesInvoice.addInvoice(date, invoiceCode, description);
+                activityLog.addLog("Added Invoice");
                 break;
             case 2:
                 salesInvoice.printInvoices();
+                activityLog.addLog("Viewed Invoice History.");
                 system("pause");
                 break;
             case 3:
                 cout << "Enter invoice code to search: ";
                 getline(cin, invoiceCode);
                 salesInvoice.searchInvoice(invoiceCode);
+                activityLog.addLog("Searched Invoice");
                 system("pause");
                 break;
             case 4:
                 cout << "Enter invoice code to delete: ";
                 getline(cin, invoiceCode);
                 salesInvoice.deleteInvoice(invoiceCode);
+                activityLog.addLog("Deleted Invoice");
                 system("pause");
                 break;
             case 5:

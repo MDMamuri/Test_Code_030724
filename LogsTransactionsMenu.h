@@ -107,5 +107,5 @@ public:
 
 };
 
-#endif // LOGSTRANSACTIONSMENU_H
+#endif 
 

@@ -11,7 +11,7 @@ void ManageEmployeeLogsMenu(ManageEmployeeMain& employeeList, ActivityLog& activ
 void InventoryManagementMenu(InventoryManagementMain& inv, ActivityLog& activityLog, int& choice);
 void LogsTransactionsMainMenu(LogsManagementMain& logSystem, int& choice); 
 void ActivityLogMenu(ActivityLog& log, int& choice);
-void SalesInvoiceMenu(SalesInvoice& salesInvoice, int& choice);
+void SalesInvoiceMenu(SalesInvoice& salesInvoice,ActivityLog& activityLog, int& choice);
 
 int main() {
     ManageEmployeeMain employeeList;
@@ -52,7 +52,7 @@ int main() {
                 ActivityLogMenu(log, choice);
                 break;
             case 5:
-                SalesInvoiceMenu(salesInvoice, choice);
+                SalesInvoiceMenu(salesInvoice,log, choice);
                 break;
             case 0:
                 system("cls");
@@ -66,6 +66,21 @@ int main() {
     } while (choice != 0);
 
     cout << "Thank you so much!!" << endl;
+    	cout << "=====================================================" << endl;
+        cout << "         Harley Report Management System             " << endl;
+        cout << "=====================================================" << endl;
+        cout << "                                                     " << endl;
+        cout << "                      CCS0015 						  " << endl;
+        cout << "          (DATA STRUCTURES AND ALGORITHMS)           " << endl;
+        cout << "													  " << endl;
+        cout << "                   FINAL PROJECT                     " << endl;
+        cout << "                                                     " << endl;
+        cout << " Student Name: Markus Mamuri                         " << endl;
+        cout << "      Section: BSITWMA - TW02                        " << endl;
+        cout << "  Professor/s: Alexander A. Hernandez                " << endl;
+        cout << "               Ian R, Ramirez                       " << endl;
+        cout << "                                                     " << endl;
+		cout << "=====================================================" << endl;
     return 0;
 }
 
