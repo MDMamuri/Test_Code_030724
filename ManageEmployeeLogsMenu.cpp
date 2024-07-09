@@ -117,7 +117,6 @@ void ManageEmployeeLogsMenu(ManageEmployeeMain& employeeList, ActivityLog& activ
             break;
 
         case 6:
-            cout << "Returning to main menu..." << endl;
             activityLog.addLog("Returned to Main Menu");
             break;
 

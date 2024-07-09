@@ -34,6 +34,18 @@ public:
     LogsManagementMain() : head(NULL) {}
 
     void logTransaction(int id, const string& description) {
+        // Check if transaction with the same ID already exists
+        Transaction* temp = head;
+        while (temp) {
+            if (temp->id == id) {
+                cout << "Transaction with ID " << id << " already exists." << endl;
+                system("pause");
+                return;
+            }
+            temp = temp->next;
+        }
+
+
         Transaction* newTransaction = new Transaction;
         newTransaction->id = id;
         newTransaction->description = description;
@@ -53,16 +65,14 @@ public:
     void displayTransactions() const {
         if (!head) {
             cout << "No transactions found." << endl;
-            
             return;
         }
         Transaction* temp = head;
         while (temp) {
             cout << "ID: " << temp->id << ", Description: " << temp->description << ", Timestamp: " << temp->timestamp << endl;
             temp = temp->next;
-            
         }
-        system("pause");
+
     }
 
     void searchTransaction(int id) const {
@@ -105,7 +115,26 @@ public:
         system("pause");
     }
 
+    void searchTransactionsByKeyword(const string& keyword) const {
+        bool found = false;
+        Transaction* temp = head;
+        while (temp) {
+            if (temp->description.find(keyword) != string::npos) {
+                if (!found) {
+                    cout << "Transactions containing \"" << keyword << "\":" << endl;
+                    found = true;
+                }
+                cout << "ID: " << temp->id << ", Description: " << temp->description << ", Timestamp: " << temp->timestamp << endl;
+            }
+            temp = temp->next;
+        }
+        if (!found) {
+            cout << "No transactions found containing \"" << keyword << "\"." << endl;
+        }
+        system("pause");
+    }
 };
+
 
 #endif 
 

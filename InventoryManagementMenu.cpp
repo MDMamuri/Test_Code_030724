@@ -75,7 +75,6 @@ void InventoryManagementMenu(InventoryManagementMain& inv, ActivityLog& activity
                 break;
             }
             case 4:
-                cout << "Returning to Main Menu" << endl;
                 activityLog.addLog("Exited Inventory Management");
                 break;
             default:

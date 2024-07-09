@@ -9,6 +9,7 @@ using namespace std;
 void LogsTransactionsMainMenu(LogsManagementMain& logSystem, ActivityLog& activityLog, int& choice){
     int id;
     string description;
+    string keyword; 
 
     system("cls");
 
@@ -65,21 +66,20 @@ void LogsTransactionsMainMenu(LogsManagementMain& logSystem, ActivityLog& activi
             cout << "                                                     " << endl;
             cout << "=====================================================" << endl;
             activityLog.addLog("Displayed Transaction History");
+            system ("Pause");
             break;
 
         case 3:
             system("cls");
             cout << "=====================================================" << endl;
-        	cout << "         Harley Report Management System             " << endl;
-        	cout << "=====================================================" << endl;
-        	cout << "                                                     " << endl;
-            cout << "Enter Transaction ID to search: ";
-            cin >> id;
-            cin.ignore();
-            logSystem.searchTransaction(id);
+            cout << "         Harley Report Management System             " << endl;
+            cout << "=====================================================" << endl;
+            cout << "                                                     " << endl;
+            cout << "Enter keyword (Case Sensitive): ";
+            cin >> keyword;
+            logSystem.searchTransactionsByKeyword(keyword);
             cout << "                                                     " << endl;
             cout << "=====================================================" << endl;
-            activityLog.addLog("Search Transaction");
             break;
 
         case 4:
@@ -92,7 +92,6 @@ void LogsTransactionsMainMenu(LogsManagementMain& logSystem, ActivityLog& activi
         	cout << "                                                     " << endl;
             cout << "Enter Transaction ID to delete: ";
             cin >> id;
-            cin.ignore();
             logSystem.deleteTransaction(id);
             cout << "                                                     " << endl;
             cout << "=====================================================" << endl;
@@ -100,7 +99,6 @@ void LogsTransactionsMainMenu(LogsManagementMain& logSystem, ActivityLog& activi
             break;
 
         case 5:
-            cout << "Returning to main menu..." << endl;
             break;
 
         default:
