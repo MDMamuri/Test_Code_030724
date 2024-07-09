@@ -16,7 +16,7 @@ struct LogNode {
 
 class ActivityLog {
 private:
-    LogNode* head; // Head of the linked list
+    LogNode* head;
 
     string getCurrentTime() const {
         time_t now = time(0);
@@ -54,7 +54,7 @@ public:
         }
     }
 
-    // Clear all logs
+   
     void clearLogs() {
         LogNode* current = head;
         while (current) {

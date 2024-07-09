@@ -55,11 +55,47 @@ public:
         }
     }
 
-    void searchInvoice(const string& invoiceCode) const {
+    void updateInvoice(const string& invoiceCode) {
         SalesInvoiceStructure* current = head;
         while (current) {
             if (current->invoiceCode == invoiceCode) {
-                cout << "Invoice found: Date: " << current->date << ", Invoice Code: " << current->invoiceCode << ", Description: " << current->description << "\n";
+                int choice;
+                system("cls");
+                cout << "=====================================================" << endl;
+                cout << "         Harley Report Management System             " << endl;
+                cout << "=====================================================" << endl;
+                cout << "                                                     " << endl;
+                cout << "   Update Menu:                                      " << endl;
+                cout << "                                                     " << endl;
+                cout << "       [1] - Update Date                             " << endl;
+                cout << "       [2] - Update Description                      " << endl;
+                cout << "                                                     " << endl;
+                cout << "=====================================================" << endl;
+                cout << "Choose an option: ";
+                cin >> choice;
+                cin.ignore();
+
+                switch (choice) {
+                    case 1: {
+                        string date;
+                        cout << "Enter new date (MM/DD/YYYY): ";
+                        getline(cin, date);
+                        current->date = date;
+                        cout << "Date updated successfully!\n";
+                        break;
+                    }
+                    case 2: {
+                        string description;
+                        cout << "Enter new description: ";
+                        getline(cin, description);
+                        current->description = description;
+                        cout << "Description updated successfully!\n";
+                        break;
+                    }
+                    default:
+                        cout << "Invalid choice. Please try again.\n";
+                        break;
+                }
                 return;
             }
             current = current->next;
@@ -94,3 +130,4 @@ public:
 };
 
 #endif 
+

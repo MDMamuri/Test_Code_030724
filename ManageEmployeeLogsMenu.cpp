@@ -12,9 +12,9 @@ void ManageEmployeeLogsMenu(ManageEmployeeMain& employeeList, ActivityLog& activ
 
     do {
     	system("cls");
-        cout << "-----------------------------------------------------" << endl;
+        cout << "=====================================================" << endl;
         cout << "         Harley Report Management System             " << endl;
-        cout << "-----------------------------------------------------" << endl;
+        cout << "=====================================================" << endl;
         cout << "                                                     " << endl;
         cout << "    Employee Logs                                    " << endl;
         cout << "                                                     " << endl;
@@ -25,7 +25,7 @@ void ManageEmployeeLogsMenu(ManageEmployeeMain& employeeList, ActivityLog& activ
         cout << "        [5] - Record Time Out                        " << endl;
         cout << "        [6] - Return Main Menu                       " << endl;
         cout << "                                                     " << endl;
-        cout << "-----------------------------------------------------" << endl;
+        cout << "=====================================================" << endl;
 
         cout << "Enter your choice: ";
         cin >> choice;
@@ -39,6 +39,10 @@ void ManageEmployeeLogsMenu(ManageEmployeeMain& employeeList, ActivityLog& activ
         switch (choice) {
         case 1:
             system("cls");
+            cout << "=====================================================" << endl;
+        	cout << "         Harley Report Management System             " << endl;
+        	cout << "=====================================================" << endl;
+        	cout << "                                                     " << endl;
             cout << "Enter Employee ID: ";
             cin >> id;
             cin.ignore();
@@ -46,18 +50,30 @@ void ManageEmployeeLogsMenu(ManageEmployeeMain& employeeList, ActivityLog& activ
             getline(cin, name);
             employeeList.addEmployee(id, name);
             activityLog.addLog("Added employee");
+            cout << "                                                     " << endl;
+            cout << "=====================================================" << endl;
             system("pause");
             break;
 
         case 2:
             system("cls");
+            cout << "=====================================================" << endl;
+        	cout << "         Harley Report Management System             " << endl;
+        	cout << "=====================================================" << endl;
+        	cout << "                                                     " << endl;
             employeeList.displayEmployees();
             activityLog.addLog("Viewed employee logs.");
+            cout << "                                                     " << endl;
+            cout << "=====================================================" << endl;
             system("pause");
             break;
 
         case 3:
             system("cls");
+            cout << "=====================================================" << endl;
+        	cout << "         Harley Report Management System             " << endl;
+        	cout << "=====================================================" << endl;
+        	cout << "                                                     " << endl;
             cout << "Enter Employee ID to update: ";
             cin >> id;
             cin.ignore();
@@ -65,24 +81,38 @@ void ManageEmployeeLogsMenu(ManageEmployeeMain& employeeList, ActivityLog& activ
             getline(cin, name);
             employeeList.updateEmployee(id, name);
             activityLog.addLog("Updated employee");
+            cout << "                                                     " << endl;
+            cout << "=====================================================" << endl;
             system("pause");
             break;
 
         case 4:
             system("cls");
+            cout << "=====================================================" << endl;
+        	cout << "         Harley Report Management System             " << endl;
+        	cout << "=====================================================" << endl;
+        	cout << "                                                     " << endl;
             cout << "Enter Employee ID: ";
             cin >> id;
             cin.ignore();
             employeeList.recordTimeIn(id);
+            cout << "                                                     " << endl;
+            cout << "=====================================================" << endl;
             system("pause");
             break;
 
         case 5:
             system("cls");
+            cout << "=====================================================" << endl;
+        	cout << "         Harley Report Management System             " << endl;
+        	cout << "=====================================================" << endl;
+        	cout << "                                                     " << endl;
             cout << "Enter Employee ID: ";
             cin >> id;
             cin.ignore();
             employeeList.recordTimeOut(id);
+            cout << "                                                     " << endl;
+            cout << "=====================================================" << endl;
             system("pause");
             break;
 

@@ -15,7 +15,6 @@ struct Employee {
     string timeOut;
     Employee* next;
 
-    // Constructor with initializer list
     Employee(int id, const string& name, const string& timeIn = "", const string& timeOut = "", Employee* next = NULL)
         : id(id), name(name), timeIn(timeIn), timeOut(timeOut), next(next) {}
 };
@@ -72,9 +71,9 @@ public:
         }
         Employee* temp = head;
         while (temp) {
-            cout << "ID: " << temp->id << ", Name: " << temp->name;
-            if (!temp->timeIn.empty()) cout << ", Time In: " << temp->timeIn;
-            if (!temp->timeOut.empty()) cout << ", Time Out: " << temp->timeOut;
+            cout << "ID: " << temp->id << ", Name: " << temp->name <<endl;
+            if (!temp->timeIn.empty()) cout << "Time In: " << temp->timeIn <<endl;
+            if (!temp->timeOut.empty()) cout << "Time Out: " << temp->timeOut <<endl;
             cout << endl;
             temp = temp->next;
         }
@@ -146,5 +145,5 @@ public:
     }
 };
 
-#endif // MANAGEEMPLOYEEMENU_H
+#endif 
 

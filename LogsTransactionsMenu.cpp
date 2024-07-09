@@ -11,11 +11,11 @@ void LogsTransactionsMainMenu(LogsManagementMain& logSystem, int& choice) {
     system("cls");
 
     do {
-        cout << "-----------------------------------------------------" << endl;
+        cout << "=====================================================" << endl;
         cout << "         Harley Report Management System             " << endl;
-        cout << "-----------------------------------------------------" << endl;
+        cout << "=====================================================" << endl;
         cout << "                                                     " << endl;
-        cout << "Logs of Transactions                                 " << endl;
+        cout << "  Logs of Transactions                               " << endl;
         cout << "                                                     " << endl;
         cout << "        [1] - Log Transaction                        " << endl;
         cout << "        [2] - Transaction History                    " << endl;
@@ -23,7 +23,7 @@ void LogsTransactionsMainMenu(LogsManagementMain& logSystem, int& choice) {
         cout << "        [4] - Delete Transaction                     " << endl;
         cout << "        [5] - Return Main Menu                       " << endl;
         cout << "                                                     " << endl;
-        cout << "-----------------------------------------------------" << endl;
+        cout << "=====================================================" << endl;
 
         cout << "Enter your choice: ";
         cin >> choice;
@@ -37,33 +37,57 @@ void LogsTransactionsMainMenu(LogsManagementMain& logSystem, int& choice) {
         switch (choice) {
         case 1:
             system("cls");
+            cout << "=====================================================" << endl;
+        	cout << "         Harley Report Management System             " << endl;
+        	cout << "=====================================================" << endl;
+        	cout << "                                                     " << endl;
             cout << "Enter Transaction ID: ";
             cin >> id;
             cin.ignore();
             cout << "Enter Transaction Description: ";
             getline(cin, description);
             logSystem.logTransaction(id, description);
+            cout << "                                                     " << endl;
+            cout << "=====================================================" << endl;
             break;
 
         case 2:
             system("cls");
+            cout << "=====================================================" << endl;
+        	cout << "         Harley Report Management System             " << endl;
+        	cout << "=====================================================" << endl;
+        	cout << "                                                     " << endl;
             logSystem.displayTransactions();
+            cout << "                                                     " << endl;
+            cout << "=====================================================" << endl;
             break;
 
         case 3:
             system("cls");
-            cout << "Enter Transaction ID to search: ";
+            cout << "=====================================================" << endl;
+        	cout << "         Harley Report Management System             " << endl;
+        	cout << "=====================================================" << endl;
+        	cout << "                                                     " << endl;
+            cout << " Enter Transaction ID to search: ";
             cin >> id;
             cin.ignore();
             logSystem.searchTransaction(id);
+            cout << "                                                     " << endl;
+            cout << "=====================================================" << endl;
             break;
 
         case 4:
             system("cls");
+            cout << "=====================================================" << endl;
+        	cout << "         Harley Report Management System             " << endl;
+        	cout << "=====================================================" << endl;
+        	cout << "                                                     " << endl;
             cout << "Enter Transaction ID to delete: ";
             cin >> id;
             cin.ignore();
             logSystem.deleteTransaction(id);
+            cout << "                                                     " << endl;
+            cout << "=====================================================" << endl;
             break;
 
         case 5:

@@ -3,8 +3,9 @@
 #include "ActivityLogMenu.h"
 #include <iostream>
 #include <string>
-#include <cstdlib> 
-#include <ctime>  
+#include <cstdlib>
+#include <ctime>
+
 using namespace std;
 
 struct Product {
@@ -21,10 +22,27 @@ class InventoryManagementMain {
 private:
     Product* head;
 
-
     int generateRandomID() {
         srand(time(0)); 
         return rand() % 1000000000; 
+    }
+
+    void deleteProduct(Product* productToDelete) {
+        if (!head) return;
+        
+        if (head == productToDelete) {
+            head = head->next;
+        } else {
+            Product* current = head;
+            while (current->next && current->next != productToDelete) {
+                current = current->next;
+            }
+            if (current->next == productToDelete) {
+                current->next = productToDelete->next;
+            }
+        }
+        delete productToDelete;
+        cout << "Product deleted successfully!" << endl;
     }
 
 public:
@@ -112,8 +130,15 @@ public:
                             system("pause"); 
                         } else {
                             current->quantity -= quantity;
-                            cout << "Quantity subtracted successfully!" << endl;
-                            activityLog.addLog("Product Quantity subtracted successfully!");
+                            if (current->quantity == 0) {
+                                Product* temp = current;
+                                current = current->next;
+                                deleteProduct(temp);
+                                activityLog.addLog("Product deleted due to quantity reaching 0!");
+                            } else {
+                                cout << "Quantity subtracted successfully!" << endl;
+                                activityLog.addLog("Product Quantity subtracted successfully!");
+                            }
                             system("pause"); 
                         }
                         break;
@@ -137,9 +162,9 @@ public:
             current = current->next;
         }
         cout << "Product not found." << endl;
-        system("pause"); // Pause after product not found message
+        system("pause");
     }
 };
 
-#endif // INVENTORYMANAGEMENTMAIN_H
+#endif
 
