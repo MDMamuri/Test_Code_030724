@@ -75,7 +75,7 @@ void LogsTransactionsMainMenu(LogsManagementMain& logSystem, ActivityLog& activi
             cout << "         Harley Report Management System             " << endl;
             cout << "=====================================================" << endl;
             cout << "                                                     " << endl;
-            cout << "Enter keyword (Case Sensitive): ";
+            cout << "Enter keyWORD (Case Sensitive): ";
             cin >> keyword;
             logSystem.searchTransactionsByKeyword(keyword);
             cout << "                                                     " << endl;

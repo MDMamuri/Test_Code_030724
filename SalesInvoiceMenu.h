@@ -12,16 +12,18 @@ struct SalesInvoiceStructure {
     string date;
     int invoiceCode;
     string description;
+    double total;  // New member for storing total amount
     SalesInvoiceStructure* next;
 
-    SalesInvoiceStructure(const string& d, int ic, const string& desc)
-        : date(d), invoiceCode(ic), description(desc), next(NULL) {}
+    SalesInvoiceStructure(const string& d, int ic, const string& desc, double t)
+        : date(d), invoiceCode(ic), description(desc), total(t), next(NULL) {}
 };
 
 class SalesInvoice {
 private:
     SalesInvoiceStructure* head;
     stack<SalesInvoiceStructure*> history;
+    double accumulatedFunds;  // New member for accumulated funds
 
     string getCurrentTime() const {
         time_t now = time(0);
@@ -39,67 +41,19 @@ private:
     }
 
 public:
-    SalesInvoice() : head(NULL) {}
-    ~SalesInvoice() {
-        while (head) {
-            SalesInvoiceStructure* temp = head;
-            head = head->next;
-            delete temp;
-        }
-    }
+    SalesInvoice() : head(NULL), accumulatedFunds(0.0) {}
 
-    void addInvoice(const string& description) {
+    void addInvoice(const string& description, double total) {
         string date = getCurrentTime();
         int invoiceCode = generateRandomID();
-        SalesInvoiceStructure* newInvoice = new SalesInvoiceStructure(date, invoiceCode, description);
+        SalesInvoiceStructure* newInvoice = new SalesInvoiceStructure(date, invoiceCode, description, total);
         newInvoice->next = head;
         head = newInvoice;
         history.push(newInvoice);
+        accumulatedFunds += total;  // Add total to accumulated funds
         cout << "Invoice added successfully.\n";
         system("pause"); 
     }
-
-    void printInvoices() const {
-        SalesInvoiceStructure* current = head;
-        while (current) {
-            cout << "Date: " << current->date << ", Invoice Code: " << current->invoiceCode << ", Description: " << current->description << "\n";
-            current = current->next;
-        }
-    }
-
-    void printInvoiceHistory() const {
-        stack<SalesInvoiceStructure*> temp = history;
-        while (!temp.empty()) {
-            SalesInvoiceStructure* invoice = temp.top();
-            cout << "Date: " << invoice->date << ", Invoice Code: " << invoice->invoiceCode << ", Description: " << invoice->description << "\n";
-            temp.pop();
-        }
-    }
-
-	void updateInvoice(int invoiceCode) {
-	    SalesInvoiceStructure* current = head;
-	    while (current) {
-	        if (current->invoiceCode == invoiceCode) {
-	            string description;
-	            system("cls");
-	            cout << "=====================================================" << endl;
-	            cout << "         Harley Report Management System             " << endl;
-	            cout << "=====================================================" << endl;
-	            cout << "                                                     " << endl;
-	            cout << "Update Menu:                                      " << endl;
-	            cout << "                                                     " << endl;
-	            cout << "Enter new description (ex. Order Description): ";
-	            getline(cin, description);
-	            current->description = description;
-	            cout << "Description updated successfully!\n";
-	            cout << "                                                     " << endl;
-	            cout << "=====================================================" << endl;
-	            return;
-	        }
-	        current = current->next;
-	    }
-	    cout << "Invoice not found.\n";
-	}
 
     void deleteInvoice(int invoiceCode) {
         SalesInvoiceStructure* current = head;
@@ -115,6 +69,9 @@ public:
             return;
         }
 
+        // Deduct invoice total from accumulated funds
+        accumulatedFunds -= current->total;
+
         if (!prev) {
             head = current->next;
         } else {
@@ -123,11 +80,61 @@ public:
 
         history.push(current);
         delete current;
-        cout << "=====================================================" << endl;
-        cout << "         Harley Report Management System             " << endl;
-        cout << "=====================================================" << endl;
-        cout << "                                                     " << endl;
         cout << "Invoice deleted successfully.\n";
+    }
+
+    void printInvoices() const {
+        SalesInvoiceStructure* current = head;
+        while (current) {
+            cout << "Date: " << current->date << ", Invoice Code: " << current->invoiceCode 
+                 << ", Description: " << current->description << ", Total: " << current->total << "\n";
+            current = current->next;
+        }
+    }
+
+    /*void updateInvoice(int invoiceCode) {
+    SalesInvoiceStructure* current = head;
+    while (current) {
+        if (current->invoiceCode == invoiceCode) {
+            string description;
+            double newTotal;
+
+            system("cls");
+            cout << "=====================================================" << endl;
+            cout << "         Harley Report Management System             " << endl;
+            cout << "=====================================================" << endl;
+            cout << "                                                     " << endl;
+            cout << "Update Menu:                                      " << endl;
+            cout << "                                                     " << endl;
+            cout << "Enter new description (ex. Order Description): ";
+            getline(cin, description);
+
+            cout << "Enter new total amount: ";
+            cin >> newTotal;
+
+            current->description = description;
+            current->total = newTotal;
+
+            cout << "Invoice updated successfully!\n";
+            cout << "                                                     " << endl;
+            cout << "=====================================================" << endl;
+            return;
+        }
+        current = current->next;
+    }
+    cout << "Invoice not found.\n";
+	}*/
+
+    double getAccumulatedFunds() const {
+        return accumulatedFunds;
+    }
+
+    ~SalesInvoice() {
+        while (head) {
+            SalesInvoiceStructure* temp = head;
+            head = head->next;
+            delete temp;
+        }
     }
 };
 
