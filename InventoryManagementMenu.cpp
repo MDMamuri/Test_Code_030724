@@ -16,7 +16,7 @@ void InventoryManagementMenu(InventoryManagementMain& inv, ActivityLog& activity
         cout << "        [1] - Add Product                            " << endl;
         cout << "        [2] - Show Product List                      " << endl;
         cout << "        [3] - Update Specific Product                " << endl;
-        cout << "        [4] - Exit                                   " << endl;
+        cout << "        [4] - Return Main Menu                       " << endl;
         cout << "                                                     " << endl;
         cout << "=====================================================" << endl;
         cout << "Enter your choice: ";

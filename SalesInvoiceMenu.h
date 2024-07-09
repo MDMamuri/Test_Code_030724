@@ -88,7 +88,7 @@ public:
 	            cout << "                                                     " << endl;
 	            cout << "Update Menu:                                      " << endl;
 	            cout << "                                                     " << endl;
-	            cout << "Enter new description: ";
+	            cout << "Enter new description (ex. Order Description): ";
 	            getline(cin, description);
 	            current->description = description;
 	            cout << "Description updated successfully!\n";
@@ -123,6 +123,10 @@ public:
 
         history.push(current);
         delete current;
+        cout << "=====================================================" << endl;
+        cout << "         Harley Report Management System             " << endl;
+        cout << "=====================================================" << endl;
+        cout << "                                                     " << endl;
         cout << "Invoice deleted successfully.\n";
     }
 };

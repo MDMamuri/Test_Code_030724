@@ -7,12 +7,6 @@
 
 using namespace std;
 
-void ManageEmployeeLogsMenu(ManageEmployeeMain& employeeList, ActivityLog& activityLog, int& choice);
-void InventoryManagementMenu(InventoryManagementMain& inv, ActivityLog& activityLog, int& choice);
-void LogsTransactionsMainMenu(LogsManagementMain& logSystem, ActivityLog& activityLog, int& choice); 
-void ActivityLogMenu(ActivityLog& log, int& choice);
-void SalesInvoiceMenu(SalesInvoice& salesInvoice,ActivityLog& activityLog, int& choice);
-
 int main() {
     ManageEmployeeMain employeeList;
     InventoryManagementMain inv;
@@ -40,18 +34,23 @@ int main() {
 
         switch (choice) {
             case 1:
+            	void ManageEmployeeLogsMenu(ManageEmployeeMain& employeeList, ActivityLog& activityLog, int& choice);
                 ManageEmployeeLogsMenu(employeeList, log, choice);
                 break;
             case 2:
+            	void InventoryManagementMenu(InventoryManagementMain& inv, ActivityLog& activityLog, int& choice);
                 InventoryManagementMenu(inv,log, choice);
                 break;
             case 3:
+            	void LogsTransactionsMainMenu(LogsManagementMain& logSystem, ActivityLog& activityLog, int& choice); 
                 LogsTransactionsMainMenu(logSystem, log, choice); 
                 break;
             case 4:
+            	void ActivityLogMenu(ActivityLog& log, int& choice);
                 ActivityLogMenu(log, choice);
                 break;
             case 5:
+            	void SalesInvoiceMenu(SalesInvoice& salesInvoice,ActivityLog& activityLog, int& choice);
                 SalesInvoiceMenu(salesInvoice,log, choice);
                 break;
             case 0:

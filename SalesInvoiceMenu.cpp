@@ -12,7 +12,7 @@ void SalesInvoiceMenu(SalesInvoice& salesInvoice, ActivityLog& activityLog, int&
         cout << "         Harley Report Management System             " << endl;
         cout << "=====================================================" << endl;
         cout << "                                                     " << endl;
-        cout << "Sales Invoice                                        " << endl;
+        cout << "	Sales Invoice                                     " << endl;
         cout << "                                                     " << endl;
         cout << "        [1] - Add Invoice                            " << endl;
         cout << "        [2] - Invoice History                        " << endl;
@@ -35,7 +35,7 @@ void SalesInvoiceMenu(SalesInvoice& salesInvoice, ActivityLog& activityLog, int&
                 cout << "         Harley Report Management System             " << endl;
                 cout << "=====================================================" << endl;
                 cout << "                                                     " << endl;
-                cout << "Enter Description (Ex. Description - 1): ";
+                cout << "Enter Description (Ex. Order Description - 1): ";
                 getline(cin, description);
                 salesInvoice.addInvoice(description);
                 activityLog.addLog("Added Invoice");
@@ -64,8 +64,6 @@ void SalesInvoiceMenu(SalesInvoice& salesInvoice, ActivityLog& activityLog, int&
                 cin.ignore();
                 salesInvoice.updateInvoice(invoiceCode);
                 activityLog.addLog("Updated Invoice");
-                cout << "                                                     " << endl;
-                cout << "=====================================================" << endl;
                 system("pause");
                 break;
             case 4:
@@ -79,8 +77,6 @@ void SalesInvoiceMenu(SalesInvoice& salesInvoice, ActivityLog& activityLog, int&
                 cin.ignore();
                 salesInvoice.deleteInvoice(invoiceCode);
                 activityLog.addLog("Deleted Invoice");
-                cout << "                                                     " << endl;
-                cout << "=====================================================" << endl;
                 system ("Pause");
                 break;
             case 5:

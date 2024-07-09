@@ -73,7 +73,7 @@ void LogsTransactionsMainMenu(LogsManagementMain& logSystem, ActivityLog& activi
         	cout << "         Harley Report Management System             " << endl;
         	cout << "=====================================================" << endl;
         	cout << "                                                     " << endl;
-            cout << " Enter Transaction ID to search: ";
+            cout << "Enter Transaction ID to search: ";
             cin >> id;
             cin.ignore();
             logSystem.searchTransaction(id);
@@ -87,6 +87,8 @@ void LogsTransactionsMainMenu(LogsManagementMain& logSystem, ActivityLog& activi
             cout << "=====================================================" << endl;
         	cout << "         Harley Report Management System             " << endl;
         	cout << "=====================================================" << endl;
+        	cout << "                                                     " << endl;
+        	logSystem.displayTransactions();
         	cout << "                                                     " << endl;
             cout << "Enter Transaction ID to delete: ";
             cin >> id;
