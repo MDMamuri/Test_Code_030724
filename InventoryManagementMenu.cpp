@@ -1,10 +1,10 @@
 #include "InventoryManagementMenu.h"
+#include "ActivityLogMenu.h"
 #include <iostream>
-#include <string>
 
 using namespace std;
 
-void InventoryManagementMenu(InventoryManagementMain& inv, int& choice) {
+void InventoryManagementMenu(InventoryManagementMain& inv, ActivityLog& activityLog, int& choice) {
     do {
         system("cls");
         cout << "-----------------------------------------------------" << endl;
@@ -39,26 +39,29 @@ void InventoryManagementMenu(InventoryManagementMain& inv, int& choice) {
                 cin >> price;
 
                 inv.addProduct(id, name, quantity, price);
+                activityLog.addLog("Added Product");
                 break;
             }
             case 2:
                 inv.showProductList();
-                system("pause"); 
+                activityLog.addLog("Viewed Product List");
+                system("pause"); // Pause after displaying the list
                 break;
             case 3: {
                 int id;
                 cout << "Enter product ID to update: ";
                 cin >> id;
 
-                inv.updateSpecificProduct(id);
-                system("pause"); 
+                inv.updateSpecificProduct(id, activityLog);
                 break;
             }
             case 4:
                 cout << "Exiting program. Goodbye!" << endl;
+                activityLog.addLog("Exited Inventory Management");
                 break;
             default:
                 cout << "Invalid choice. Please try again." << endl;
+                system("pause");
                 break;
         }
 

@@ -1,6 +1,7 @@
 #ifndef INVENTORYMANAGEMENTMAIN_H
 #define INVENTORYMANAGEMENTMAIN_H
 
+#include "ActivityLogMenu.h"
 #include <iostream>
 #include <string>
 
@@ -36,30 +37,30 @@ public:
         newProduct->next = head;
         head = newProduct;
         cout << "Product added successfully!" << endl;
-        system ("Pause");
+        system("pause"); // Pause after adding a product
     }
 
     void showProductList() {
         Product* current = head;
         if (current == NULL) {
             cout << "No products in inventory." << endl;
-            system ("Pause");
+            system("pause"); // Pause if no products are found
             return;
         }
         while (current) {
             cout << "ID: " << current->id << ", Name: " << current->name
                  << ", Quantity: " << current->quantity << ", Price: $" << current->price << endl;
             current = current->next;
-            system ("Pause");
+            system("pause"); // Pause after displaying each product
         }
     }
 
-    void updateSpecificProduct(int id) {
+    void updateSpecificProduct(int id, ActivityLog& activityLog) {
         Product* current = head;
         while (current) {
             if (current->id == id) {
-            	system ("cls");
                 int choice;
+                system("cls");
                 cout << "-----------------------------------------------------" << endl;
                 cout << "         Harley Inventory Management System         " << endl;
                 cout << "-----------------------------------------------------" << endl;
@@ -67,7 +68,7 @@ public:
                 cout << "                                                      " << endl;
                 cout << "       [1] - Update Name"                            << endl;
                 cout << "       [2] - Add Quantity"                           << endl;
-                cout << "       [3] - Subtract Quantity"                      << endl; 
+                cout << "       [3] - Subtract Quantity"                      << endl;
                 cout << "       [4] - Update Price"                           << endl;
                 cout << "                                                      " << endl;
                 cout << "-----------------------------------------------------" << endl;
@@ -82,7 +83,8 @@ public:
                         getline(cin, name);
                         current->name = name;
                         cout << "Name updated successfully!" << endl;
-                        system ("Pause");
+                        activityLog.addLog("Product Name updated successfully!");
+                        system("pause"); // Pause after updating the name
                         break;
                     }
                     case 2: {
@@ -91,7 +93,8 @@ public:
                         cin >> quantity;
                         current->quantity += quantity;
                         cout << "Quantity added successfully!" << endl;
-                        system ("Pause");
+                        activityLog.addLog("Product Quantity added successfully!");
+                        system("pause"); // Pause after adding quantity
                         break;
                     }
                     case 3: {
@@ -100,11 +103,13 @@ public:
                         cin >> quantity;
                         if (quantity > current->quantity) {
                             cout << "Error: Not enough quantity to subtract!" << endl;
-                            system ("Pause");
+                            activityLog.addLog("Error: Not enough quantity to subtract!");
+                            system("pause"); // Pause after error message
                         } else {
                             current->quantity -= quantity;
                             cout << "Quantity subtracted successfully!" << endl;
-                            system ("Pause");
+                            activityLog.addLog("Product Quantity subtracted successfully!");
+                            system("pause"); // Pause after subtracting quantity
                         }
                         break;
                     }
@@ -114,12 +119,12 @@ public:
                         cin >> price;
                         current->price = price;
                         cout << "Price updated successfully!" << endl;
-                        system ("Pause");
+                        system("pause"); // Pause after updating price
                         break;
                     }
                     default:
                         cout << "Invalid choice. Please try again." << endl;
-                        system ("Pause");
+                        system("pause"); // Pause after invalid choice
                         break;
                 }
                 return;
@@ -127,8 +132,9 @@ public:
             current = current->next;
         }
         cout << "Product not found." << endl;
+        system("pause"); // Pause after product not found message
     }
 };
 
-#endif
+#endif // INVENTORYMANAGEMENTMAIN_H
 
